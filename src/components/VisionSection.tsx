@@ -36,7 +36,7 @@ export const VisionSection: React.FC = () => {
           <span className="mr-2">💡</span> Ein konkreter Gedanke
         </h3>
         <p className="text-sm text-yellow-800">
-          Im Bereich Aftersales sehe ich großes Potenzial in der Nutzung von GenAI, um technische Dokumentationen für Servicetechniker interaktiv und mehrsprachig in Echtzeit zugänglich zu machen (ähnlich wie mein 'ChatBird' Projekt).
+          Im Bereich After-Sales-Services sehe ich großes Potenzial für den Einsatz von GenAI im Dealer Management System.
         </p>
       </div>
     </div>
