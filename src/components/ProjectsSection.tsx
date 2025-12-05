@@ -13,13 +13,7 @@ export const ProjectsSection: React.FC = () => {
 
       <div className="grid grid-cols-1 gap-6">
         {PROJECTS.map((project) => (
-          <a 
-            key={project.id} 
-            href={project.projectUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="block bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col hover:shadow-md transition-shadow duration-300"
-          >
+          <div key={project.id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col">
             <div className="h-48 overflow-hidden relative">
               <img 
                 src={project.imageUrl} 
@@ -43,7 +37,7 @@ export const ProjectsSection: React.FC = () => {
                 ))}
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

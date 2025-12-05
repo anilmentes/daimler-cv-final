@@ -61,8 +61,7 @@ export const PROJECTS: Project[] = [
     title: "ChatBird - GenAI Bot",
     description: "Ein von Grund auf entwickelter KI-Chatbot für das Startup BirdVision. Automatisierung von Support-Tickets und Lead-Kategorisierung durch HubSpot-CRM Integration.",
     technologies: ["Python", "GenAI / Gemini", "SQL", "API Integration"],
-    imageUrl: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
-    projectUrl: "https://chatbird-app.vercel.app/"
+    imageUrl: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 2,
