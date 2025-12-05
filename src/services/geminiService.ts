@@ -1,4 +1,3 @@
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { GENERATE_SYSTEM_INSTRUCTION } from '../constants';
 import { ChatMessage } from '../types';
 
@@ -7,16 +6,6 @@ export const sendMessageToAssistant = async (
   newMessage: string
 ): Promise<string> => {
   try {
-    // Adhere to Google GenAI SDK guidelines: API key must be obtained from process.env.API_KEY.
-    const apiKey = process.env.API_KEY;
-
-    if (!apiKey) {
-      console.error("API Key not found! Please ensure GEMINI_API_KEY is defined in your .env file or environment variables.");
-      return "Fehler: API-Schlüssel fehlt. Bitte prüfen Sie die Umgebungsvariablen.";
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
-
     const systemInstruction = GENERATE_SYSTEM_INSTRUCTION();
     
     // Geçmiş mesajları filtrele ve formatla
@@ -34,17 +23,22 @@ Aktuelle Eingabe:
 Interviewer: ${newMessage}
 Anil:`;
 
-    const response: GenerateContentResponse = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        systemInstruction: systemInstruction,
-        temperature: 0.7,
-      }
+    const response = await fetch('/api/gemini-proxy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt, systemInstruction }),
     });
 
-    // GenerateContentResponse.text doğrudan string döndürür.
-    const text = response.text;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Gemini API proxy error');
+    }
+
+    const data = await response.json();
+    const text = data.response;
+
     if (!text) {
         throw new Error("Leere Antwort von der KI erhalten.");
     }
