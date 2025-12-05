@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { GENERATE_SYSTEM_INSTRUCTION } from '../constants';
 import { ChatMessage } from '../types';
 
@@ -7,13 +7,12 @@ export const sendMessageToAssistant = async (
   newMessage: string
 ): Promise<string> => {
   try {
-    // API anahtarı, Google GenAI SDK yönergelerine göre process.env.API_KEY'den alınmalıdır.
-    // Bu değişkenin çalışma zamanında tanımlı ve erişilebilir olduğu varsayılmaktadır.
+    // Adhere to Google GenAI SDK guidelines: API key must be obtained from process.env.API_KEY.
     const apiKey = process.env.API_KEY;
 
     if (!apiKey) {
-      console.error("API Key bulunamadı! Lütfen process.env.API_KEY'in tanımlı olduğundan emin olun.");
-      return "Hata: API anahtarı eksik. Lütfen ortam değişkenlerini kontrol edin.";
+      console.error("API Key not found! Please ensure API_KEY is defined in your environment variables.");
+      return "Fehler: API-Schlüssel fehlt. Bitte prüfen Sie die Umgebungsvariablen.";
     }
 
     const ai = new GoogleGenAI({ apiKey });
@@ -35,7 +34,7 @@ Aktuelle Eingabe:
 Interviewer: ${newMessage}
 Anil:`;
 
-    const response = await ai.models.generateContent({
+    const response: GenerateContentResponse = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
@@ -44,6 +43,7 @@ Anil:`;
       }
     });
 
+    // GenerateContentResponse.text doğrudan string döndürür.
     const text = response.text;
     if (!text) {
         throw new Error("Leere Antwort von der KI erhalten.");
@@ -52,6 +52,6 @@ Anil:`;
     return text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Entschuldigung, ich habe gerade Verbindungsproblemleri. Könnten wir das Thema wechseln?";
+    return "Entschuldigung, ich habe gerade Verbindungsprobleme. Könnten wir das Thema wechseln?";
   }
 };
