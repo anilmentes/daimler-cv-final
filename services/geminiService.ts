@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { GENERATE_SYSTEM_INSTRUCTION } from '../constants';
 import { ChatMessage } from '../types';
@@ -8,10 +7,11 @@ export const sendMessageToAssistant = async (
   newMessage: string
 ): Promise<string> => {
   try {
-    // The API key must be obtained exclusively from process.env.API_KEY as per coding guidelines.
+    // KRİTİK DÜZELTME: @google/genai yönergelerine göre API anahtarı process.env.API_KEY'den alınmalıdır.
+    // Vercel, build zamanında bu ortam değişkenini Vite projesine enjekte etmelidir.
     if (!process.env.API_KEY) {
-      console.error("API Key is missing! Ensure API_KEY is defined in your environment variables.");
-      return "Error: API key is missing. Please contact the developer.";
+      console.error("API Key is missing! Ensure API_KEY is defined in your Vercel environment variables.");
+      return "Hata: API anahtarı eksik. Lütfen Vercel ayarlarınızı kontrol edin ve API_KEY ortam değişkenini tanımladığınızdan emin olun.";
     }
 
     // Initialize GoogleGenAI with the API key from environment variables.
@@ -52,6 +52,7 @@ Anil:`;
     return text;
   } catch (error) {
     console.error("Gemini API Error:", error);
+    // Hata durumunda kullanıcı dostu mesaj
     return "Entschuldigung, ich habe gerade Verbindungsprobleme. Könnten wir das Thema wechseln?";
   }
 };
