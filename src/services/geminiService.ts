@@ -11,7 +11,7 @@ export const sendMessageToAssistant = async (
     const apiKey = process.env.API_KEY;
 
     if (!apiKey) {
-      console.error("API Key not found! Please ensure API_KEY is defined in your environment variables.");
+      console.error("API Key not found! Please ensure GEMINI_API_KEY is defined in your .env file or environment variables.");
       return "Fehler: API-Schlüssel fehlt. Bitte prüfen Sie die Umgebungsvariablen.";
     }
 
