@@ -5,8 +5,8 @@ import { Experience, Project, Skill, Education } from './types';
 export const CANDIDATE_NAME = "Anil Emre Mentes";
 export const CANDIDATE_TITLE = "Masterstudent Management @ TUM";
 export const INTERVIEW_COMPANY = "Daimler Buses";
-// HINWEIS: Ersetzen Sie diesen Link durch die URL Ihres eigenen Fotos (z.B. von LinkedIn oder GitHub)
-export const PROFILE_IMAGE_URL = "https://github.com/TOMfoolery2025/insideTUM/blob/d21be9794d3af5b23d1d384c61a5733bf493b484/Gemini_Generated_Image_ac7oajac7oajac7o.png";
+// GÜNCEL: Kullanıcının sağladığı çalışan doğrudan resim bağlantısı
+export const PROFILE_IMAGE_URL = "https://i.postimg.cc/pXJx4khW/profil-jpg.png";
 
 export const ABOUT_ME = `
 Hallo, ich bin ${CANDIDATE_NAME}. Ich bin Masterstudent an der TU München (Heilbronn) und Maschinenbauingenieur (ITU).
