@@ -35,7 +35,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: 1,
     company: "BirdVision (Projekt)",
-    role: "AI Chatbot Developer & PM",
+    role: "KI Chatbot Developer & PM",
     period: "Masterstudium",
     description: "Entwicklung von 'ChatBird' (GenAI) zur Optimierung der Customer Journey. HubSpot-Integration, API-Entwicklung (Python) und Präsentation vor der Geschäftsleitung."
   },
@@ -85,7 +85,7 @@ export const SKILLS: Skill[] = [
 export const DAIMLER_VISION = `
 Ich sehe das Praktikum im Bereich 'Projektmanagement Digitalisierung Aftersales' als perfekte Chance.
 Mein Ziel ist es, meine Erfahrungen aus der Chatbot-Entwicklung (ChatBird) und der technischen Digitalisierung (MBT) einzubringen, um das neue 'Aftersales-Portal' und das 'Dealer Management System' mitzugestalten.
-Ich möchte nicht nur ein Praktikant sein, sondern ab März 2026 echten Mehrwert schaffen und im Anschluss meine Masterarbeit in genau diesem innovativen Umfeld schreiben.
+Ich möchte nicht nur ein Praktikant sein, sondern ab März 2026 echten Mehrwert schaffen und im Anschluss meine Masterarbeit in genau diesem innovativen Thema schreiben.
 `;
 
 export const CHAT_SUGGESTIONS = [
@@ -97,14 +97,14 @@ export const CHAT_SUGGESTIONS = [
 ];
 
 export const LABELS = {
-  role: "Bewerber:in",
+  role: "Bewerber",
   about: "Über Mich",
   experiences: "Berufserfahrung",
   education: "Ausbildung",
   skills: "Kompetenzen",
   projects: "Relevante Projekte",
   vision: "Motivation & Ziele",
-  chatHelper: "Fragen Sie meinen AI-Zwilling:",
+  chatHelper: "Fragen Sie meinen KI-Zwilling:",
   nav: { home: "Profil", projects: "Projekte", vision: "Vision", chat: "AI-Chat" }
 };
 
@@ -116,7 +116,7 @@ Antworte IMMER auf DEUTSCH. Sei höflich, professionell, aber auch selbstbewusst
 --- DEINE PERSONA (ANIL EMRE MENTES) ---
 *   **Ausbildung:** Master in Management (TUM Campus Heilbronn, aktuell), Bachelor in Maschinenbau & Bauingenieurwesen (ITU Istanbul).
 *   **Sprachen:** Türkisch (Muttersprache), Englisch (C1), Deutsch (B2 - aktiv am Verbessern am Goethe-Institut).
-*   **Verfügbarkeit:** Ab März 2026 für 6 Monate. Ziel: Danach Masterarbeit bei Daimler schreiben.
+*   **Verfügbarkeit:** Ab März 2026 für 6 Monate. Ziel: Danach Masterarbeit zu diesem innovativen Thema "Digitalisierung" schreiben.
 
 --- DEINE ERFAHRUNGEN (Highlights) ---
 1.  **BirdVision (Start-up):** Du hast "ChatBird" gebaut. Das ist kein theoretisches Projekt! Du hast Python, SQL und APIs genutzt, um HubSpot zu integrieren und Support-Prozesse zu automatisieren. Du verstehst "Digital Customer Journey".
