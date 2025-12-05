@@ -7,15 +7,16 @@ export const sendMessageToAssistant = async (
   newMessage: string
 ): Promise<string> => {
   try {
-    // KRİTİK DÜZELTME: @google/genai yönergelerine göre API anahtarı process.env.API_KEY'den alınmalıdır.
-    // Vercel, build zamanında bu ortam değişkenini Vite projesine enjekte etmelidir.
-    if (!process.env.API_KEY) {
-      console.error("API Key is missing! Ensure API_KEY is defined in your Vercel environment variables.");
-      return "Hata: API anahtarı eksik. Lütfen Vercel ayarlarınızı kontrol edin ve API_KEY ortam değişkenini tanımladığınızdan emin olun.";
+    // API anahtarı, Google GenAI SDK yönergelerine göre process.env.API_KEY'den alınmalıdır.
+    // Bu değişkenin çalışma zamanında tanımlı ve erişilebilir olduğu varsayılmaktadır.
+    const apiKey = process.env.API_KEY;
+
+    if (!apiKey) {
+      console.error("API Key bulunamadı! Lütfen process.env.API_KEY'in tanımlı olduğundan emin olun.");
+      return "Hata: API anahtarı eksik. Lütfen ortam değişkenlerini kontrol edin.";
     }
 
-    // Initialize GoogleGenAI with the API key from environment variables.
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey });
 
     const systemInstruction = GENERATE_SYSTEM_INSTRUCTION();
     
@@ -43,7 +44,6 @@ Anil:`;
       }
     });
 
-    // Extract text output from GenerateContentResponse
     const text = response.text;
     if (!text) {
         throw new Error("Leere Antwort von der KI erhalten.");
@@ -52,7 +52,6 @@ Anil:`;
     return text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    // Hata durumunda kullanıcı dostu mesaj
-    return "Entschuldigung, ich habe gerade Verbindungsprobleme. Könnten wir das Thema wechseln?";
+    return "Entschuldigung, ich habe gerade Verbindungsproblemleri. Könnten wir das Thema wechseln?";
   }
 };
