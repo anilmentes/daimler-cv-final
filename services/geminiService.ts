@@ -7,13 +7,16 @@ export const sendMessageToAssistant = async (
   newMessage: string
 ): Promise<string> => {
   try {
+    // Fix: Use process.env.API_KEY as per Google GenAI SDK guidelines.
+    // This assumes process.env.API_KEY is available in the environment.
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
     const systemInstruction = GENERATE_SYSTEM_INSTRUCTION();
     
+    // Geçmiş mesajları filtrele ve formatla
     const recentHistory = history
       .filter(msg => !msg.isError)
-      .slice(-10)
+      .slice(-10) // Son 10 mesajı bağlam olarak tut
       .map(msg => `${msg.role === 'user' ? 'Interviewer' : 'Anil'}: ${msg.text}`)
       .join('\n');
 
@@ -42,7 +45,6 @@ Anil:`;
     return text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    // Hata durumunda kullanıcı dostu mesaj
-    return "Entschuldigung, ich habe gerade Verbindungsprobleme. Können wir das Thema wechseln?";
+    return "Entschuldigung, ich habe gerade Verbindungsprobleme. Könnten wir das Thema wechseln?";
   }
 };
